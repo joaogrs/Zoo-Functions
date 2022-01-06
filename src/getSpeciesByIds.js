@@ -6,7 +6,7 @@ function getSpeciesByIds(...ids) {
 
   ids.forEach((id) =>
     animals.push(species.find((animal) => animal.id === id)));
-    
+
   console.log(animals);
 
   return animals;
