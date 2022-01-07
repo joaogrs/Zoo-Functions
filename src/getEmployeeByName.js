@@ -3,8 +3,8 @@ const data = require('../data/zoo_data');
 function getEmployeeByName(employeeName) {
   const { employees } = data;
   const vazio = {};
-  const func = (employer) => employer.firstName === employeeName || employer.lastName === employeeName;
-  const selectedEmployer = employees.find(func);
+  let fun = (employer) => employer.firstName === employeeName || employer.lastName === employeeName;
+  const selectedEmployer = employees.find(fun);
 
   if (!employeeName) {
     return vazio;
