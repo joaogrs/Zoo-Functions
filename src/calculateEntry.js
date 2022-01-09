@@ -1,11 +1,42 @@
 const data = require('../data/zoo_data');
 
+const entrants = [
+  { name: 'Lara Carvalho', age: 5 },
+  { name: 'Frederico Moreira', age: 5 },
+  { name: 'Pedro Henrique Carvalho', age: 5 },
+  { name: 'Maria Costa', age: 18 },
+  { name: 'Núbia Souza', age: 18 },
+  { name: 'Carlos Nogueira', age: 50 },
+];
+
 function countEntrants(entrants) {
-  // seu código aqui
+  let child = 0;
+  let adult = 0;
+  let senior = 0;
+  entrants.forEach((entrant) => {
+    if (entrant.age <18) {
+      child += 1;
+    }
+    else if (entrant.age >= 18 && entrant.age < 50 ) {
+      adult += 1;
+    }
+    else if (entrant.age >= 50) {
+      senior += 1;
+    }
+  })
+  return {child: child, adult:adult, senior:senior}
 }
 
 function calculateEntry(entrants) {
-  // seu código aqui KK
+  if (entrants !== undefined && entrants.length > 0) {
+  const numPessoas = countEntrants(entrants)
+  const childs = numPessoas.child * 20.99 ;
+  const adults = numPessoas.adult * 49.99;
+  const seniors = numPessoas.senior * 24.99;
+  return childs + adults + seniors;
+  }
+  return 0;
 }
+calculateEntry(entrants)
 
 module.exports = { calculateEntry, countEntrants };
