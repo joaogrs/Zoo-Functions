@@ -95,30 +95,10 @@ const ObjectSex = (sex1) => ({
 
 function getAnimalMap(options = {}) {
   const { includeNames, sex, sorted } = options;
-  if (includeNames) {
-    if(!sex && !sorted){
-      return normalObject();
-    } if (!sex) {
-      return sort();
-    } if (!sorted) {
-        return ObjectSex(sex);
-    } return {
-        NE: animalsBySexSorted('NE', sex),
-        NW: animalsBySexSorted('NW', sex),
-        SE: animalsBySexSorted('SE', sex),
-        SW: animalsBySexSorted('SW', sex),
-      };
-  } return notParameter();
-}
-
-
-/*function getAnimalMap(options = {}) {
-  const { includeNames, sex, sorted } = options;
   if (!includeNames) {
     return notParameter();
-  } if (!sex && !sorted) {
-    return normalObject();
   } if (!sex) {
+    if(!sorted) { return normalObject();}
     return sort();
   } if (!sorted) {
     return ObjectSex(sex);
@@ -129,7 +109,6 @@ function getAnimalMap(options = {}) {
     SE: animalsBySexSorted('SE', sex),
     SW: animalsBySexSorted('SW', sex),
   };
-}*/
-
+}
 
 module.exports = getAnimalMap;
