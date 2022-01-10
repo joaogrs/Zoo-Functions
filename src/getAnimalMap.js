@@ -65,16 +65,27 @@ function retornaAnimal(local) {
   return array1;
 }
 
+const notParameter = () => {
+  return {
+  NE: retornaAnimal('NE'),
+  NW: retornaAnimal('NW'),
+  SE: retornaAnimal('SE'),
+  SW: retornaAnimal('SW'),
+  };
+}
+const sort = () => {
+  return {
+    NE: retornaObjSorted('NE'),
+    NW: retornaObjSorted('NW'),
+    SE: retornaObjSorted('SE'),
+    SW: retornaObjSorted('SW'),
+  };
+}
 
 function getAnimalMap(options) {
   if (!options || options.includeNames !== true) {
-    return {
-      NE: retornaAnimal('NE'),
-      NW: retornaAnimal('NW'),
-      SE: retornaAnimal('SE'),
-      SW: retornaAnimal('SW'),
-    };
-  } if (options.sorted === undefined && options.sex === undefined){
+    return notParameter();
+  } if (options.sorted === undefined && options.sex === undefined) {
     return {
       NE: retornaObj('NE'),
       NW: retornaObj('NW'),
@@ -82,27 +93,21 @@ function getAnimalMap(options) {
       SW: retornaObj('SW'),
     };
   } if (options.sorted === true && options.sex === undefined) {
-    return {
-      NE: retornaObjSorted('NE'),
-      NW: retornaObjSorted('NW'),
-      SE: retornaObjSorted('SE'),
-      SW: retornaObjSorted('SW'),
-    };
+    return sort();
   } if (options.sorted === undefined && options.sex !== undefined) {
-      return {
-        NE: animalsBySex('NE', options.sex),
-        NW: animalsBySex('NW', options.sex),
-        SE: animalsBySex('SE', options.sex),
-        SW: animalsBySex('SW', options.sex),
-      };
-    }
-      return {
-        NE: animalsBySexSorted('NE', options.sex),
-        NW: animalsBySexSorted('NW', options.sex),
-        SE: animalsBySexSorted('SE', options.sex),
-        SW: animalsBySexSorted('SW', options.sex),
-      }
+    return {
+      NE: animalsBySex('NE', options.sex),
+      NW: animalsBySex('NW', options.sex),
+      SE: animalsBySex('SE', options.sex),
+      SW: animalsBySex('SW', options.sex),
+    };
+  }
+  return {
+    NE: animalsBySexSorted('NE', options.sex),
+    NW: animalsBySexSorted('NW', options.sex),
+    SE: animalsBySexSorted('SE', options.sex),
+    SW: animalsBySexSorted('SW', options.sex),
+  };
+}
 
-};
-
-  module.exports = getAnimalMap
+module.exports = getAnimalMap;
