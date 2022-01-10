@@ -6,25 +6,23 @@ function countEntrants(entrants) {
   let senior = 0;
   entrants.forEach((entrant) => {
     if (entrant.age < 18) {
-      child += 1;
-    }
-    else if (entrant.age >= 18 && entrant.age < 50 ) {
-      adult += 1;
-    }
+      child += 1;}
+    else if (entrant.age >= 18 && entrant.age < 50) {
+      adult += 1;}
     else if (entrant.age >= 50) {
       senior += 1;
     }
-  })
-  return {child: child, adult:adult, senior:senior}
+  });
+  return { child, adult, senior };
 }
 
 function calculateEntry(entrants) {
   if (entrants !== undefined && entrants.length > 0) {
-  const numPessoas = countEntrants(entrants)
-  const childs = numPessoas.child * 20.99 ;
-  const adults = numPessoas.adult * 49.99;
-  const seniors = numPessoas.senior * 24.99;
-  return childs + adults + seniors;
+    const numPessoas = countEntrants(entrants);
+    const childs = numPessoas.child * 20.99;
+    const adults = numPessoas.adult * 49.99;
+    const seniors = numPessoas.senior * 24.99;
+    return childs + adults + seniors;
   }
   return 0;
 }
