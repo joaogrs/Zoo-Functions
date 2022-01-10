@@ -84,9 +84,9 @@ const normalObject = () => ({
   NW: retornaObj('NW'),
   SE: retornaObj('SE'),
   SW: retornaObj('SW'),
-  });
+});
 
-  const ObjectSex = (sex1) => ({
+const ObjectSex = (sex1) => ({
   NE: animalsBySex('NE', sex1),
   NW: animalsBySex('NW', sex1),
   SE: animalsBySex('SE', sex1),
