@@ -1,29 +1,28 @@
 const data = require('../data/zoo_data');
 
-const entrants = [
-  { name: 'Lara Carvalho', age: 5 },
-  { name: 'Frederico Moreira', age: 5 },
-  { name: 'Pedro Henrique Carvalho', age: 5 },
-  { name: 'Maria Costa', age: 18 },
-  { name: 'Núbia Souza', age: 18 },
-  { name: 'Carlos Nogueira', age: 50 },
-];
-
 const {species} = data;
 
+const count = (specie2) => species
+.find((specie) => specie.name === specie2).residents.length;
+
+const countSex = (specie3, sex) => species
+.find((specie) => specie.name === specie3)
+.residents.filter((resident)=>resident.sex === sex).length;
+
 function countAnimals(animal) {
-  // acessar o array de especies
-  // para cada animal acessar a chave residentes e contar quantos elementos possui
-  // retornar nome e numero de inviduos em objeto caso parametro vazio
   if(!animal) {
-    return console.log(species
+    return species
     .reduce((acc,specie) => {
       acc[specie.name] = specie.residents.length;
-      return acc
-    }, {}))
+      return acc;
+    }, {})
   }
-
+  if (animal.sex === undefined){
+    return count(animal.specie);
+  }
+  return countSex(animal.specie, animal.sex);
 }
 
 countAnimals()
+
 module.exports = countAnimals;
