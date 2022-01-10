@@ -98,7 +98,7 @@ function getAnimalMap(options = {}) {
   if (!includeNames) {
     return notParameter();
   } if (!sex) {
-    if(!sorted) { return normalObject();}
+    if (!sorted) { return normalObject(); }
     return sort();
   } if (!sorted) {
     return ObjectSex(sex);
