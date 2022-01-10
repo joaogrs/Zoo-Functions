@@ -6,10 +6,10 @@ function countEntrants(entrants) {
   let senior = 0;
   entrants.forEach((entrant) => {
     if (entrant.age < 18) {
-      child += 1;}
-    else if (entrant.age >= 18 && entrant.age < 50) {
-      adult += 1;}
-    else if (entrant.age >= 50) {
+      child += 1;
+    } else if (entrant.age >= 18 && entrant.age < 50) {
+      adult += 1;
+    } else if (entrant.age >= 50) {
       senior += 1;
     }
   });

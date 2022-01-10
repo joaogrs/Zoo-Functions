@@ -74,22 +74,21 @@ function getAnimalMap(options) {
       SE: retornaAnimal('SE'),
       SW: retornaAnimal('SW'),
     };
-  } if(options.sorted === undefined && options.sex === undefined){
+  } if (options.sorted === undefined && options.sex === undefined){
     return {
       NE: retornaObj('NE'),
       NW: retornaObj('NW'),
       SE: retornaObj('SE'),
       SW: retornaObj('SW'),
     };
-  }if (options.sorted === true && options.sex === undefined) {
+  } if (options.sorted === true && options.sex === undefined) {
     return {
       NE: retornaObjSorted('NE'),
       NW: retornaObjSorted('NW'),
       SE: retornaObjSorted('SE'),
       SW: retornaObjSorted('SW'),
     };
-  }
-    if(options.sorted === undefined && options.sex !== undefined) {
+  } if (options.sorted === undefined && options.sex !== undefined) {
       return {
         NE: animalsBySex('NE', options.sex),
         NW: animalsBySex('NW', options.sex),
