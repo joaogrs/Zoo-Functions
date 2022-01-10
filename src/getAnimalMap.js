@@ -65,36 +65,36 @@ function retornaAnimal(local) {
   return array1;
 }
 
-const notParameter = () => {
-  return {
-  NE: retornaAnimal('NE'),
-  NW: retornaAnimal('NW'),
-  SE: retornaAnimal('SE'),
-  SW: retornaAnimal('SW'),
-  };
-}
-const sort = () => {
-  return {
+const notParameter = () => ({
+    NE: retornaAnimal('NE'),
+    NW: retornaAnimal('NW'),
+    SE: retornaAnimal('SE'),
+    SW: retornaAnimal('SW'),
+  });
+
+const sort = () => ({
     NE: retornaObjSorted('NE'),
     NW: retornaObjSorted('NW'),
     SE: retornaObjSorted('SE'),
     SW: retornaObjSorted('SW'),
-  };
-}
+  });
 
-function getAnimalMap(options) {
-  if (!options || options.includeNames !== true) {
+  const normalObject = () => ({
+    NE: retornaObj('NE'),
+    NW: retornaObj('NW'),
+    SE: retornaObj('SE'),
+    SW: retornaObj('SW'),
+  });
+
+function getAnimalMap(options = {}) {
+  const { includeNames, sex, sorted } = options;
+  if (!includeNames) {
     return notParameter();
-  } if (options.sorted === undefined && options.sex === undefined) {
-    return {
-      NE: retornaObj('NE'),
-      NW: retornaObj('NW'),
-      SE: retornaObj('SE'),
-      SW: retornaObj('SW'),
-    };
-  } if (options.sorted === true && options.sex === undefined) {
+  } if (!sorted && !sex) {
+    return normalObject();
+  } if (!sex) {
     return sort();
-  } if (options.sorted === undefined && options.sex !== undefined) {
+  } if (!sorted) {
     return {
       NE: animalsBySex('NE', options.sex),
       NW: animalsBySex('NW', options.sex),
