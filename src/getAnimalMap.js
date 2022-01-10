@@ -91,7 +91,7 @@ const ObjectSex = (sex1) => ({
   NW: animalsBySex('NW', sex1),
   SE: animalsBySex('SE', sex1),
   SW: animalsBySex('SW', sex1),
-  });
+});
 
 function getAnimalMap(options = {}) {
   const { includeNames, sex, sorted } = options;
@@ -111,5 +111,6 @@ function getAnimalMap(options = {}) {
     SW: animalsBySexSorted('SW', sex),
   };
 }
+
 
 module.exports = getAnimalMap;
