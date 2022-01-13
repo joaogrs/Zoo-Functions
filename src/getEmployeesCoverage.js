@@ -14,17 +14,17 @@ function consult(nameOrId) {
     let objReturn;
     return objReturn;
   }
-    const objReturn = { id: `${employeeObj.id}`,
-      fullName: `${employeeObj.firstName} ${employeeObj.lastName}` };
-    const arr1 = [];
-    const arr2 = [];
-    employeeObj.responsibleFor.forEach((id1) => {
-      arr1.push(getNameAnimalByID(id1));
-      arr2.push(getLocationAnimalByID(id1));
-    });
-    objReturn.species = arr1;
-    objReturn.locations = arr2;
-    return objReturn;
+  const objReturn = { id: `${employeeObj.id}`,
+    fullName: `${employeeObj.firstName} ${employeeObj.lastName}` };
+  const arr1 = [];
+  const arr2 = [];
+  employeeObj.responsibleFor.forEach((id1) => {
+    arr1.push(getNameAnimalByID(id1));
+    arr2.push(getLocationAnimalByID(id1));
+  });
+  objReturn.species = arr1;
+  objReturn.locations = arr2;
+  return objReturn;
 }
 const criaLista = () => {
   const list = [];
@@ -39,16 +39,16 @@ function getEmployeesCoverage(options = {}) {
   const verify2 = verify === undefined;
   const verify3 = !options.name && !options.id
 
-  if (verify3) {
+  if (!options.name && !options.id) {
     return criaLista();
   }
-  if (verify2) {
+  if (verify === undefined) {
     throw new Error('Informações inválidas');
   }
-  if (options.name) {
-    return consult(options.name);
-  }
-  if (options.id) {
+  if (options.name || options.id) {
+    if (options.name){
+      return consult(options.name);
+    }
     return consult(options.id);
   }
 }
