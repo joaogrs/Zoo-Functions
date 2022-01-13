@@ -1,4 +1,4 @@
-const data = require('../data/zoo_data'); 
+const data = require('../data/zoo_data');
 
 const { employees } = data;
 
@@ -8,14 +8,14 @@ const getLocationAnimalByID = (id) => data.species.find((specie) => specie.id ==
 
 function consult(nameOrId) {
   const employeeObj = employees
-    .find((employee) => employee.id === nameOrId 
+    .find((employee) => employee.id === nameOrId
     || employee.firstName === nameOrId || employee.lastName === nameOrId);
   if (employeeObj === undefined) {
     let objReturn;
     return objReturn;
-  } else {
+  }
     const objReturn = { id: `${employeeObj.id}`,
-     fullName: `${employeeObj.firstName} ${employeeObj.lastName}` };
+      fullName: `${employeeObj.firstName} ${employeeObj.lastName}` };
     const arr1 = [];
     const arr2 = [];
     employeeObj.responsibleFor.forEach((id1) => {
@@ -25,7 +25,6 @@ function consult(nameOrId) {
     objReturn.species = arr1;
     objReturn.locations = arr2;
     return objReturn;
-  }
 }
 const criaLista = () => {
   const list = [];
@@ -35,22 +34,23 @@ const criaLista = () => {
 
 function getEmployeesCoverage(options = {}) {
   const verify = employees
-  .find((employee) => employee.id === options.id 
+    .find((employee) => employee.id === options.id
   || employee.firstName === options.name || employee.lastName === options.name);
-  const verify2 = verify === undefined
+  const verify2 = verify === undefined;
+  const verify3 = !options.name && !options.id
 
-  if (!options.name && !options.id) {
+  if (verify3) {
     return criaLista();
-  };
+  }
   if (verify2) {
     throw new Error('Informações inválidas');
-  };
+  }
   if (options.name) {
     return consult(options.name);
-  };
+  }
   if (options.id) {
     return consult(options.id);
-  };
-};
+  }
+}
 
 module.exports = getEmployeesCoverage;
