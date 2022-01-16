@@ -36,8 +36,6 @@ function getEmployeesCoverage(options = {}) {
   const verify = employees
     .find((employee) => employee.id === options.id
   || employee.firstName === options.name || employee.lastName === options.name);
-  const verify2 = verify === undefined;
-  const verify3 = !options.name && !options.id
 
   if (!options.name && !options.id) {
     return criaLista();
@@ -46,7 +44,7 @@ function getEmployeesCoverage(options = {}) {
     throw new Error('Informações inválidas');
   }
   if (options.name || options.id) {
-    if (options.name){
+    if (options.name) {
       return consult(options.name);
     }
     return consult(options.id);
