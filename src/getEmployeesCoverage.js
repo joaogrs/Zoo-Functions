@@ -32,21 +32,30 @@ const criaLista = () => {
   return list;
 };
 
-function getEmployeesCoverage(options = {}) {
-  const verify = employees
-    .find((employee) => employee.id === options.id
-  || employee.firstName === options.name || employee.lastName === options.name);
-
-  if (!options.name && !options.id) {
-    return criaLista();
+const aux = (par) => {
+  if (!par) return 1;
+  if (par) {
+    const aux1 = employees
+    .find((employee) => employee.id === par.id
+  || employee.firstName === par.name || employee.lastName === par.name);
+    if (aux1 === undefined) {
+      const aux1 = 0;
+      return aux1;
+    }
   }
-  if (verify === undefined) {
+};
+
+function getEmployeesCoverage(options) {
+  const verify = aux(options)
+
+  if (!options) return criaLista();
+  if (verify === 0) {
     throw new Error('Informações inválidas');
   }
-  if (options.name || options.id) {
-    if (options.name) {
+  if (options.name) {
       return consult(options.name);
-    }
+  }
+  if (options.id) {
     return consult(options.id);
   }
 }

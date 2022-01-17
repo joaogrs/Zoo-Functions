@@ -25,12 +25,12 @@ function fullSchedule() {
 }
 
 function animalsArray() {
-    const animalsArr = [];
-    species.forEach(({ name }) => {
-      animalsArr.push(name);
-    });
-    return animalsArr;
-  }
+  const animalsArr = [];
+  species.forEach(({ name }) => {
+    animalsArr.push(name);
+  });
+  return animalsArr;
+}
 
 function dailySchedule(dailySelected) {
   const daysSchedule = fullSchedule();
