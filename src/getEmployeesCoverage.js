@@ -35,7 +35,7 @@ const criaLista = () => {
 const aux = (par) => {
   if (!par) return 1;
   if (par) {
-    const aux1 = employees
+    let aux1 = employees
       .find((employee) => employee.id === par.id
   || employee.firstName === par.name || employee.lastName === par.name);
     if (aux1 === undefined) {
