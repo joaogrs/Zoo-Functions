@@ -17,7 +17,7 @@ Após cada um dos passos, haverá um exemplo do comando a ser digitado para faze
 2. Entre no diretório que acabou de criar e depois clone o projeto:
 ```javascript
   cd projeto-joao-gabriel
-  git clone git@github.com:joaogrs/triviaGame.git
+  git clone git@github.com:joaogrs/zooFunctions.git
 ```
 
 3. As funções de cada requisitos estão dentro da pasta `src`.
